@@ -1,9 +1,11 @@
 
 /**
- * Write a description of class Bank here.
+ * Deskripsi kelas Bank:
+ * 1. Kelas Bank berkaitan dengan pengaturan customer
  * 
  * @author Suci Salimah Giani
- * @version version1
+ * @NPM 1306368444
+ * @version 27 Februari 2016
  */
 public class Bank
 {
@@ -24,72 +26,72 @@ public class Bank
        
     }
     
-    public static String getAddress()
+    public static String getAddress() //method accessor untuk alamat
     {
-        return "";
+        return ""; //return untuk string
     }
     
-    public static double getCreditRate ()
-    {
-        return 0;
-    }
-    
-    public static double getInvestmentRate()
+    public static double getCreditRate () //method accessor untuk mendapatkan credit rate
     {
         return 0;
     }
     
-    public static String getHoursOfOperation()
+    public static double getInvestmentRate()//method accessor untuk investment rate
+    {
+        return 0;
+    }
+    
+    public static String getHoursOfOperation() //method accessor Hours of Operation
     {
         return null;
     }
     
-    public static int getLastID()
+    public static int getLastID() //method accessor untuk last ID
     {
         return 0;
     }
     
-    public static int getMaxCustomers()
+    public static int getMaxCustomers() //method accessor untuk customer maksimal
     {
         return 0;
     }
     
-    public static String getName()
-    {
-        return null;
-    }
-    
-    public static int getNextID ()
-    {
-        return 0;
-    }
-    
-    public static String getWebsite()
+    public static String getName() //method accessor untuk nama
     {
         return "";
     }
     
-    public static double getPremiumRate()
+    public static int getNextID () //method accessor untuk nest ID
     {
         return 0;
     }
     
-    public static String getPhone()
+    public static String getWebsite() //method accessor untuk website
     {
         return "";
     }
     
-    public static void setCreditRate (double rate)
+    public static double getPremiumRate() //method accessor untuk premium rate
+    {
+        return 0;
+    }
+    
+    public static String getPhone() //method accessor untuk phone
+    {
+        return "";
+    }
+    
+    public static void setCreditRate (double rate) //method mutator untuk credit rate
     {
         
     }
     
-    public static void setInvestmentRate (double rate)
+    public static void setInvestmentRate (double rate) //method mutator untuk investment rate
     {
         
     }
     
-    public static void setPremium (double rate)
+    public static void setPremium (double rate) //method mutator untuk premium
     {
         
     }

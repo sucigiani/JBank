@@ -1,95 +1,70 @@
 /**
- * Write a description of class customer here.
+ * Deskripsi kelas Customer:
+ * 1. Kelas Customer berisi data diri customer
  * 
  * @author Suci Salimah Giani 
- * @version version1 
+ * @NPM 1306368444
+ * @version v27 Februari 2016
  */
+
 public class Customer
 {
-    private Account accounts = new Account();
-    private String cityAddress;
-    private int custId;
-    private String dtaeOfBirth;
-    private String email;
-    private String firstName;
-    private String lastName;
-    private int numberOfCurrentAccounts;
-    private String streetAddress;
-    private String phoneNumber;
-    private String zipOrPostalCode;
+    private Account accounts = new Account(); //Membuat variabel bertipe account
+    private String name,address,cityAddress,cityName,dateOfBirth,email,firstName,lastName,streetAddress,phoneNumber,zipOrPostalCode; //membuat variabel bertipe string
+    private int custId,numberOfCurrentAccounts; //membuat variabel bertipe integer
     
-    /**
-     * Constructor for objects of class Customer
-     */
-     public Customer() {
-        // initialise instance variables
-        
-    }
-
-    public Customer(String fname, String lname, String dob)
+    public Customer(){}
+    public Customer(String fname,String lname, String dob){}
+    public Customer(String firstName,String lastName, String dateOfBirth, int custId){}
+    
+    //Saya mengatur semua fungsi dengan memberikan nama dan return ke variabel bersangkutan untuk method accessor
+    public String getAddress()
     {
-      
+        return streetAddress + cityName + zipOrPostalCode;
     }
-    
-    public Customer(String firstName, String lastName, String dateOfBirth, int custId)
+    public Account getAccount() //return ke variabel bersangkutan
     {
-   
+        return accounts;
     }
-    
-    private String getAddress()
+    public int getCustomerId() //return ke variabel bersangkutan, method accessor untuk customer ID
     {
-        return null;
+        return custId;
     }
-    
-    private Account getAccount()
+    public String getEmail()
     {
-        return null;
+        return email;
     }
-    
-    private int getCustomer()
+    public int getNumOfAccounts()
     {
-        return 0;
+        return numberOfCurrentAccounts;
     }
-    
-    private String getEmail()
+    public String getPhoneNumber()
     {
-        return null;
+        return phoneNumber;
     }
-    
-    private String getCustomerName()
+    public String getName()
     {
-        return null;
+        return firstName + ","+lastName;
     }
-    
-    public int getNumOfAccount()
+    //Saya mengatur variabel pada masing-masing fungsi atau assign argumen untuk semua method mutator
+    public void setAddress(String street, String city, String zipOrPostalCode) //membuat fungsi Address, dengan variabel string pada keterangan yang sudah saya declare di awal program
     {
-        return 0;
+       address = street + city + zipOrPostalCode;
     }
-    
-    private String getPhoneNumber()
+    public void setEmail(String emailAddress)
     {
-        return null;
+        email = emailAddress;
     }
-    
-    private void setAddress(String street, String city, String code)
+    public void setName(String firstName, String lastName) 
     {
-        
+        name = firstName+lastName;
     }
-    
-    private void setEmail(String emailAddress)
+    public void setPhoneNumber(String phoneNum) 
     {
-    
+        phoneNumber = phoneNum;
     }
-    
-    private void setCustomerName (String lname, String fname)
+    public void setAccount(Account accounts )
     {
-        
+    this.accounts = accounts;
     }
-    
-    private void setPhoneNumber(String phoneNum)
-    {
-        
-    }
-    
-    
 }
