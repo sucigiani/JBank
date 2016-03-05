@@ -4,67 +4,194 @@
  * 
  * @author Suci Salimah Giani 
  * @NPM 1306368444
- * @version v27 Februari 2016
+ * @version 27 Februari 2016
+ * UPDATED 3rd of March 2016
  */
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Customer
 {
     private Account accounts = new Account(); //Membuat variabel bertipe account
     private String name,address,cityAddress,cityName,dateOfBirth,email,firstName,lastName,streetAddress,phoneNumber,zipOrPostalCode; //membuat variabel bertipe string
-    private int custId,numberOfCurrentAccounts; //membuat variabel bertipe integer
+    public int custId,numberOfCurrentAccounts; //membuat variabel bertipe integer
+    private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+        + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        
+    /**
+     * constructor object class
+     */
+     public Customer() 
+    {
+        
+    }
     
-    public Customer(){}
-    public Customer(String fname,String lname, String dob){}
-    public Customer(String firstName,String lastName, String dateOfBirth, int custId){}
+    /**
+     * method constructor untuk customer
+     * @param firstName first name customer
+     * @param lastName last name customer
+     * @param dateOfBirth date of birth customer
+     */
+    public Customer(String firstName, String lastName)
+    {
+      this(firstName,lastName,null);
+    }
     
-    //Saya mengatur semua fungsi dengan memberikan nama dan return ke variabel bersangkutan untuk method accessor
+    /**
+     * method constructor untuk customer
+     * @param firstName first name customer
+     * @param lastName last name customer
+     * @param dateOfBirth date of birth customer
+     * @param custId id customer
+     */
+    public Customer(String firstName, String lastName, String dateOfBirth)
+    {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+        custId = Bank.getNextID();
+    }
+    
+    /**
+     * method accessor untuk mendapatkan alamat customer
+     * @return ke streetAddress, cityName, dan Postal Code milik customer
+     */
     public String getAddress()
     {
-        return streetAddress + cityName + zipOrPostalCode;
+        return streetAddress+cityName+zipOrPostalCode;
     }
-    public Account getAccount() //return ke variabel bersangkutan
+    
+    /**
+     * method accessor untuk mendapatkan alamat customer
+     * @return ke accounts customer
+     */
+    public Account getAccount()
     {
         return accounts;
     }
-    public int getCustomerId() //return ke variabel bersangkutan, method accessor untuk customer ID
+    
+    /**
+     * method mutator untuk mengubah ID customer
+     * @param id milik customer
+     */
+    public void setCustID(int id)
+    {
+        custId = id;
+    }    
+    
+    /**
+     * method mutator untuk mengubah jumlah akun customer
+     * @param akun milik customer
+     */
+    public void setAccount(Account akun)
+    {
+      accounts = akun;
+    }
+    
+    /**
+     * method accessor untuk mendapatkan ID customer 
+     * @return ke custId untuk nilai id 
+     */
+    public int getCustId()
     {
         return custId;
     }
-    public String getEmail()
+    
+    /**
+     * method accessor untuk mendapatkan email customer
+     * @return ke email
+     */
+    private String getEmail()
     {
         return email;
     }
-    public int getNumOfAccounts()
+    
+    /**
+     * method accessor untuk mendapatkan firstName dan lastName dari customer
+     * @return ke full name of customer
+     */
+    public String getName()
+    {
+        return lastName + "," + firstName;
+    }
+    
+    /**
+     * method accessor untuk mendapatkan jumlah akun customer
+     * @return ke numberOfCurrentAccounts
+     */
+    public int getNumOfAccount()
     {
         return numberOfCurrentAccounts;
     }
+    
+     
+    /**
+     * method accessor untuk mendapatkan nomor telepon customer
+     * @return ke string no telepon
+     */
     public String getPhoneNumber()
     {
         return phoneNumber;
     }
-    public String getName()
+    
+     
+    /**
+     * method mutator untuk mengubah nilai streetAddress, cityName, zipOrPostalCode
+     * @param street untuk nama jalan
+     * @param city untuk nama kota
+     * @param code untuk zip code
+     */
+    public void setAddress(String street, String city, String code)
     {
-        return firstName + ","+lastName;
+        this.streetAddress = street;
+        this.cityName = city;
+        this.zipOrPostalCode = code;
     }
-    //Saya mengatur variabel pada masing-masing fungsi atau assign argumen untuk semua method mutator
-    public void setAddress(String street, String city, String zipOrPostalCode) //membuat fungsi Address, dengan variabel string pada keterangan yang sudah saya declare di awal program
+    
+     
+    /**
+     * method mutator untuk mengubah email customer
+     * @return matcher.matches
+     */
+    public boolean setEmail(String emailAddress)
     {
-       address = street + city + zipOrPostalCode;
+       this.email = emailAddress;
+                
+       Pattern pattern = Pattern.compile(EMAIL_PATTERN);//pattern email dari java 
+       Matcher matcher = pattern.matcher(emailAddress);//assign pattern email ke matcher
+       return matcher.matches(); // validasi email customer
     }
-    public void setEmail(String emailAddress)
+    
+     
+    /**
+     * method mutator untuk mengubah nama lengkap customer
+     * @param lname nama belakang
+     * @param fname nama depan
+     */
+    public void setName (String lname, String fname)
     {
-        email = emailAddress;
+        this.lastName = lname;
+        this.firstName = fname;
     }
-    public void setName(String firstName, String lastName) 
+    
+     
+    /**
+     * method mutator untuk mengubah nomor telepon customer
+     * @param phoneNum telepon customer
+     */
+    public void setPhoneNumber(String phoneNum)
     {
-        name = firstName+lastName;
+        this.phoneNumber = phoneNum;
     }
-    public void setPhoneNumber(String phoneNum) 
+    
+    public void setDateOfBirth(String dob)
     {
-        phoneNumber = phoneNum;
+        this.dateOfBirth = dob ;
     }
-    public void setAccount(Account accounts )
+    
+     public String DateOfBirth()
     {
-    this.accounts = accounts;
+        return dateOfBirth;
     }
 }

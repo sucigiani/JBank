@@ -6,6 +6,7 @@
  * @NPM 1306368444
  * @version 24 Februari 2016
  * updated 27 Februari 2016
+ * updated 3 Maret 2016
  */
 
 public class Account
@@ -16,25 +17,27 @@ public class Account
    
     public Account() //kerangka Account
     {
-        
+       acctType = 'S';
+       balance = 10.00;
     }
 
     public Account (char type, double amount)
     {
-      
+    
     }
    
-    public double deposit(double amount) //saya mengatur deposit menjadi public
+    public boolean deposit(double amount) //saya mengatur deposit menjadi public
     {
-        if (amount >= 0) { // Jika nilai positif
-            System.out.println ("true");} //sistem akan memberikan nilai TRUE
-        
-        else if (amount < 0) { //Jika nilai negatif
-            System.out.println ("false");} //sistem akan memberikan nilai FALSE
-            balance = balance + amount; //menambahkan ang dari balance
-            return balance;
+        if (amount < 0) { /*jika deposit customer kurang dari 0 atau bernilai negatif*/
+            return false;
+    }
+        else {
+            balance = balance+amount; /*menambah uang pada deposit customer*/
+            return true;
+        }  
     }
     //Untuk semua method accessor, saya mengatur agar return ke variabel yang bersangkutan
+    
     public char getAcctType()
     {
         return acctType;
@@ -65,14 +68,14 @@ public class Account
         acctType = type;//memasukkan tipe akun yang diinginkan
     }
     
-    public double withdraw (double amount) //untuk melakukan penarikan saldo
+    public boolean withdraw (double amount) //untuk melakukan penarikan saldo
     {
-        if (amount >= 0) { //Jika jumlahnya positif
-            System.out.println ("true");} //sistem akan memberikan nilai TRUE
+        if (balance - amount < 0) { //Jika jumlahnya negatif
+            return false;} //sistem akan kembali ke nilai FALSE
             
-        else if (amount < 0) { //Jika jumlahnya negatif
-            System.out.println ("false");} //sistem akan memberikan nilai FALSE
+        else { //Jika jumlahnya positif
             balance = balance - amount; //mengurangi balance dengan jumlah amount, san memasukkannya ke balance
-            return balance;
+            return true;
     }
+}
 }

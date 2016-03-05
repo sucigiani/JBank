@@ -6,6 +6,7 @@
  * @author Suci Salimah Giani
  * @NPM 1306368444
  * @version 27 Februari 2016
+ * UPDATEd 5th of March 2016
  */
 public class Bank
 {
@@ -14,56 +15,80 @@ public class Bank
     private static String closeTime;
     private static double investmentInterestRate;
     private static int lastCustID;
-    private static int nextCustID;
+    private static int nextCustID = 1000;
     private static String phone;
-    public static String website;
-    public static String bankAddress = "1234 JavaStreet, AnyCity, ThisState,34567";
+    public static String website, Address = "1234 JavaStreet, AnyCity, ThisState,34567", Name = "JBANK";
     public static int maxNumOfCustomers = 20;
-    public static String bankName = "JBANK";
+    public static int maxNumOfCurrentCustomers;
+    public static int numOfCurrentCustomers;
     
+    /**
+     * Constructor method untuk Bank
+     */
     public Bank()
     {
        
     }
     
-    public static String getAddress() //method accessor untuk alamat
+    /*public static String getAddress() //method accessor untuk alamat
     {
         return ""; //return untuk string
-    }
+    }*/
     
-    public static double getCreditRate () //method accessor untuk mendapatkan credit rate
+    /**
+     * method accessor untuk mendapatkan credit rate
+     */
+    public static double getCreditRate ()
     {
         return 0;
     }
-    
-    public static double getInvestmentRate()//method accessor untuk investment rate
+    /**
+     * method accessor untuk investment rate
+     */
+    public static double getInvestmentRate()
     {
         return 0;
     }
-    
-    public static String getHoursOfOperation() //method accessor Hours of Operation
+    /**
+     * method accessor Hours of Operation
+     */
+    public static String getHoursOfOperation() 
     {
         return null;
     }
-    
-    public static int getLastID() //method accessor untuk last ID
+    /**
+     * method accessor untuk last ID
+     */
+    public static int getLastID() 
     {
         return 0;
     }
     
-    public static int getMaxCustomers() //method accessor untuk customer maksimal
+    /*public static int getMaxCustomers() //method accessor untuk customer maksimal
     {
         return 0;
-    }
+    }*/
     
-    public static String getName() //method accessor untuk nama
+    /*public static String getName() //method accessor untuk nama
     {
         return "";
-    }
-    
-    public static int getNextID () //method accessor untuk nest ID
+    }*/
+    /**
+     * method accessor untuk next ID
+     */
+    public static int getNextID () 
     {
-        return 0;
+        int nextID;
+        if (numOfCurrentCustomers == maxNumOfCurrentCustomers) {
+            nextID = 1000;
+            return nextID;
+        }
+        else {
+            nextCustID = nextCustID + 1;
+            numOfCurrentCustomers = numOfCurrentCustomers +1;
+            lastCustID = nextCustID;
+            return nextCustID;
+        }
     }
     
     public static String getWebsite() //method accessor untuk website
@@ -96,4 +121,8 @@ public class Bank
         
     }
     
+    public static int getnumOfCurrentCustomers ()
+    {
+        return numOfCurrentCustomers;
+    }    
 }
