@@ -10,14 +10,20 @@
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.text.DateFormat;
 
 public class Customer
 {
+    public Date dateOfBirth;
     private Account accounts = new Account(); //Membuat variabel bertipe account
-    private String name,address,cityAddress,cityName,dateOfBirth,email,firstName,lastName,streetAddress,phoneNumber,zipOrPostalCode; //membuat variabel bertipe string
+    private String name,address,cityAddress,cityName,email,firstName,lastName,streetAddress,phoneNumber,zipOrPostalCode; //membuat variabel bertipe string
     public int custId,numberOfCurrentAccounts; //membuat variabel bertipe integer
     private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
         + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+    private Date date;    
+    
         
     /**
      * constructor object class
@@ -45,7 +51,7 @@ public class Customer
      * @param dateOfBirth date of birth customer
      * @param custId id customer
      */
-    public Customer(String firstName, String lastName, String dateOfBirth)
+    public Customer(String firstName, String lastName, Date dateOfBirth)
     {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -185,13 +191,16 @@ public class Customer
         this.phoneNumber = phoneNum;
     }
     
-    public void setDateOfBirth(String dob)
+    public void setDateOfBirth(Date dob)
     {
         this.dateOfBirth = dob ;
+        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyy");
     }
     
-     public String DateOfBirth()
+    public Date getDateOfBirth()
     {
-        return dateOfBirth;
+       String dateToStr = DateFormat.getInstance().format(date);
+       return dateOfBirth;
     }
+    
 }

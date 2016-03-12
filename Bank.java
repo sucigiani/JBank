@@ -1,4 +1,3 @@
-
 /**
  * Deskripsi kelas Bank:
  * 1. Kelas Bank berkaitan dengan pengaturan customer
@@ -8,19 +7,24 @@
  * @version 27 Februari 2016
  * UPDATEd 5th of March 2016
  */
+
+import java.util.Date;
+
+
 public class Bank
 {
     // instance variables - replace the example below with your own
     private static double creditInterestRate ;
-    private static String closeTime;
+    private static Date startTime;
+    private static Date closeTime;
     private static double investmentInterestRate;
-    private static int lastCustID;
+    private static int lastCustID = 1000;
     private static int nextCustID = 1000;
     private static String phone;
     public static String website, Address = "1234 JavaStreet, AnyCity, ThisState,34567", Name = "JBANK";
     public static int maxNumOfCustomers = 20;
     public static int maxNumOfCurrentCustomers;
-    public static int numOfCurrentCustomers;
+    private static int numOfCurrentCustomers;
     
     /**
      * Constructor method untuk Bank
@@ -78,17 +82,29 @@ public class Bank
      */
     public static int getNextID () 
     {
-        int nextID;
-        if (numOfCurrentCustomers == maxNumOfCurrentCustomers) {
-            nextID = 1000;
-            return nextID;
+        int NextCustIDs;
+        NextCustIDs = nextCustID;
+        if (nextCustID == 0)  //mengecek apa nilai nextCustID sama dengan 0
+        {   
+            lastCustID = 1000; //menghitunglastCustID
+            numOfCurrentCustomers = numOfCurrentCustomers;
+            
+            return NextCustIDs;
         }
-        else {
-            nextCustID = nextCustID + 1;
-            numOfCurrentCustomers = numOfCurrentCustomers +1;
-            lastCustID = nextCustID;
-            return nextCustID;
+        
+        else if ( numOfCurrentCustomers == maxNumOfCustomers)
+        {//mengecek apakah customer sudah memiliki max account
+            return 0;
         }
+        
+        else if (nextCustID != 0)
+        {//apabila customer masih bisa memiliki akun
+            lastCustID = nextCustID; //nextCustID dimasukkan nilainya ke lastCustID
+            nextCustID += 1;//menghitung nextCustID
+           
+            numOfCurrentCustomers += 1;
+        }
+        return NextCustIDs;
     }
     
     public static String getWebsite() //method accessor untuk website
@@ -125,4 +141,24 @@ public class Bank
     {
         return numOfCurrentCustomers;
     }    
+    
+    public Date getStartTime()
+    {
+        return startTime;
+    }
+    
+    public void setStartTime()
+    {
+        
+    }
+    
+    public Date getCloseTime()
+    {
+        return closeTime;
+    }
+    
+    public void setCloseTime()
+    {
+        
+    }
 }
