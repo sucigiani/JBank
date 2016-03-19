@@ -7,6 +7,7 @@
  * @version 24 Februari 2016
  * updated 27 Februari 2016
  * updated 3 Maret 2016
+ * updated 19 Maret 2016
  */
 
 public class Account
@@ -15,15 +16,25 @@ public class Account
     public double balance;
     private String id;
    
-    public Account() //kerangka Account
+    public Account(Customer customer,double amount,char tipe) //kerangka Account
     {
-       acctType = 'S';
-       balance = 10.00;
+       acctType = tipe;
+       balance = amount;
+       id = customer.getCustId()+" "+ tipe;
     }
 
     public Account (char type, double amount)
     {
+      acctType = type;
+      balance = amount;
+    }
     
+    public String toString()
+    {
+      System.out.println("Account type = "+acctType);
+      System.out.println("ID = "+id);
+      System.out.println("Balance = "+balance);
+      return "";  
     }
    
     public boolean deposit(double amount) //saya mengatur deposit menjadi public
@@ -37,35 +48,61 @@ public class Account
         }  
     }
     //Untuk semua method accessor, saya mengatur agar return ke variabel yang bersangkutan
+       /**
+       * Method accessor untuk mendapatkan tipe akun customer
+       * @return tipe dari akun
+       */
     
     public char getAcctType()
     {
         return acctType;
     }
     
+    /**
+       * Method accessor untuk mendapatkan nilai balance
+       * @return nilai balance
+       */
     public double getBalance()
     {
         return balance;
     }
     
+    /**
+       * Method accessor untuk mendapatkan id customer
+       * @return id customer
+       */
     public String getId()
     {
         return id; //return ke variabel yang bersangkutan, yakni ID
     }
+    
     //Untuk semua method mutator, saya meng-assign semua argumen
+    
+    /**
+       * Method mutator untuk memasukkan saldo customer
+       * @param amount nilai deposit customer
+       */
     public void setBalance (double amount)
     {
-        balance = amount; //memasukkan saldo
+        this.balance = amount; //memasukkan saldo
     }
     
-    public void setID (String acctId)
+    /**
+     * method mutator untuk memasukkan ID customer
+     * @param acctId ID dari akun 
+     */
+    /*public void setID (String acctId)
     {
         id = acctId; //mengatur ID akun
-    }
+    }*/
     
+    /**
+     * method mutator untuk memasukkan tipe akun customer
+     * @param type tipe akun
+     */
     public void setAcctType(char type)
     {
-        acctType = type;//memasukkan tipe akun yang diinginkan
+        this.acctType = type;//memasukkan tipe akun yang diinginkan
     }
     
     public boolean withdraw (double amount) //untuk melakukan penarikan saldo

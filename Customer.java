@@ -6,6 +6,7 @@
  * @NPM 1306368444
  * @version 27 Februari 2016
  * UPDATED 3rd of March 2016
+ * UPDATED 19th of March 2016
  */
 
 import java.util.regex.Matcher;
@@ -17,7 +18,7 @@ import java.text.DateFormat;
 public class Customer
 {
     public Date dateOfBirth;
-    private Account accounts = new Account(); //Membuat variabel bertipe account
+    private Account[] accounts = new Account[4]; //Membuat variabel bertipe account
     private String name,address,cityAddress,cityName,email,firstName,lastName,streetAddress,phoneNumber,zipOrPostalCode; //membuat variabel bertipe string
     public int custId,numberOfCurrentAccounts; //membuat variabel bertipe integer
     private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
@@ -72,16 +73,22 @@ public class Customer
      * method accessor untuk mendapatkan alamat customer
      * @return ke accounts customer
      */
-    public Account getAccount()
+    public Account getAccount(char tipe)
     {
-        return accounts;
+        for (Account type : accounts)
+        {
+            if (type.getAcctType()==tipe){
+                return type;
+            }
+        }   
+        return null;
     }
     
     /**
      * method mutator untuk mengubah ID customer
      * @param id milik customer
      */
-    public void setCustID(int id)
+    public void setCustId(int id)
     {
         custId = id;
     }    
@@ -90,11 +97,11 @@ public class Customer
      * method mutator untuk mengubah jumlah akun customer
      * @param akun milik customer
      */
-    public void setAccount(Account akun)
+    /*public void setAccount(Account akun)
     {
       accounts = akun;
     }
-    
+    */
     /**
      * method accessor untuk mendapatkan ID customer 
      * @return ke custId untuk nilai id 
@@ -119,7 +126,7 @@ public class Customer
      */
     public String getName()
     {
-        return lastName + "," + firstName;
+        return lastName + "," + firstName + dateOfBirth;
     }
     
     /**
@@ -193,7 +200,7 @@ public class Customer
     
     public void setDateOfBirth(Date dob)
     {
-        this.dateOfBirth = dob ;
+        Date date = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyy");
     }
     

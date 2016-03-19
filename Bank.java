@@ -6,9 +6,13 @@
  * @NPM 1306368444
  * @version 27 Februari 2016
  * UPDATEd 5th of March 2016
+ * UPDATED 19th of March 2016
  */
 
 import java.util.Date;
+import java.util.*;
+import java.text.*;
+import java.io.*;
 
 
 public class Bank
@@ -22,9 +26,24 @@ public class Bank
     private static int nextCustID = 1000;
     private static String phone;
     public static String website, Address = "1234 JavaStreet, AnyCity, ThisState,34567", Name = "JBANK";
-    public static int maxNumOfCustomers = 20;
+    public static int MAX_NUM_OF_CUSTOMERS, maxNumOfAccForCustomer = 4;
     public static int maxNumOfCurrentCustomers;
     private static int numOfCurrentCustomers;
+    
+    static {
+        Scanner s = new Scanner(System.in);
+        System.out.print("\nMaximum number of Customers' Account: ");
+        int z = s.nextInt();
+        for (int i=0;i<z;i++)
+        {
+            System.out.println("Customer" +i);
+            Customer[] cArray = new Customer[i];
+        }
+        MAX_NUM_OF_CUSTOMERS = z;
+        System.out.println ("Maximum value: " +MAX_NUM_OF_CUSTOMERS); 
+    }
+    
+    private static Customer[] Customers = new Customer[MAX_NUM_OF_CUSTOMERS];
     
     /**
      * Constructor method untuk Bank
@@ -32,6 +51,29 @@ public class Bank
     public Bank()
     {
        
+    }
+    
+    public static boolean addCustomer (Customer customer) {
+        for (int i = 0; i < Customers.length; i++) {
+            if (Customers[i] == null) {
+                Customers[i] = customer;
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public static Customer getCustomer (int custId) {
+        for (int i = 0; i < Customers.length; i++) {
+            if (Customers[i].getCustId() == custId) {
+                return Customers[i];
+            }
+        }
+        return null;
+    }
+    
+    public static int getMaxNumOfCustomers() {
+        return MAX_NUM_OF_CUSTOMERS;
     }
     
     /*public static String getAddress() //method accessor untuk alamat
@@ -92,7 +134,7 @@ public class Bank
             return NextCustIDs;
         }
         
-        else if ( numOfCurrentCustomers == maxNumOfCustomers)
+        else if ( numOfCurrentCustomers == MAX_NUM_OF_CUSTOMERS )
         {//mengecek apakah customer sudah memiliki max account
             return 0;
         }
