@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=cust\ amount\ term
+comment0.target=Investment(Customer,\ double,\ int)
+comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ Investment\r\n
+comment1.params=days
+comment1.target=void\ addDailyInterest(int)
+comment1.text=\r\n\ Metode\ addDailyInterest\ berfungsi\ untuk\ menghitung\ bunga\ total\ \r\n\ yang\ didapat\ sesuai\ dengan\ banyaknya\ hari\r\n\ @param\ \ days\ sebagai\ banyaknya\ hari\r\n
+comment2.params=amount
+comment2.target=boolean\ withdraw(double)
+comment2.text=\r\n\ Method\ withdraw\ digunakan\ untuk\ mengambil\ sejumlah\ uang\ dari\ suatu\ akun\ \r\n\ @param\ amount\ sebagai\ jumlah\ nilai\ uang\ yang\ diambil\r\n
+numComments=3
